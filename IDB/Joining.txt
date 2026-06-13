@@ -1,0 +1,49 @@
+//equijoin
+select emp.ename, emp.sal, emp.deptno, dept.deptno, dept.loc
+from emp, dept
+where emp.deptno = dept.deptno
+
+select * from emp
+select * from dept
+
+select emp.ename, emp.sal, emp.deptno, dept.deptno, dept.loc
+from emp, dept
+where emp.deptno = dept.deptno
+and emp.ename = 'KING'
+
+select e.ename, d.deptno, d.loc
+from emp e, dept d
+where e.deptno = d.deptno
+
+//nonequijoin
+select e.ename, e.sal, s.grade
+from emp e, salgrade s
+where e.sal between s.losal and s.hisal
+and e.ename = 'CLARK'
+
+//outer join
+select distinct deptno from emp
+select distinct deptno from dept
+
+select emp.ename, emp.sal, emp.deptno, dept.deptno, dept.loc
+from emp, dept
+where emp.deptno (+) = dept.deptno
+
+//self join
+select * from emp
+SELECT worker.ename, manager.ename
+FROM emp worker, emp manager
+WHERE worker.mgr = manager.empno;
+
+SELECT worker.ename ||' works for '|| manager.ename Newname
+FROM emp worker, emp manager
+WHERE worker.mgr = manager.empno;
+
+//self-outer join
+SELECT worker.ename, manager.ename
+FROM emp worker, emp manager
+WHERE worker.mgr (+) = manager.empno;
+
+SELECT worker.ename, manager.ename
+FROM emp worker, emp manager
+WHERE worker.mgr = manager.empno (+);

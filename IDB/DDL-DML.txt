@@ -1,0 +1,78 @@
+//create a studentinfo table with 2 columns
+create table studentinfo (id varchar2(8), name varchar2(20))
+select * from studentinfo
+desc studentinfo
+//drop the existing table
+drop table studentinfo
+
+//create a "StudentInfo" table with 3 columns
+create table "StudentInfo" ("Id" int, "Name" varchar2(20), "Cgpa" number(3,2))
+desc "StudentInfo"
+drop table "StudentInfo"
+
+//create a student table with 3 columns
+create table student (id int, name varchar2 (20), cgpa number (3,2))
+desc student
+//rename the exisiting table
+rename student to "student info"
+desc "student info"
+rename "student info" to studentinfo
+desc studentinfo
+//add 2 new columns in the existing table
+alter table studentinfo add (phone varchar2(11), email varchar2(15))
+desc studentinfo
+//dropping a column from the exisiting table
+alter table studentinfo drop column cgpa
+desc studentinfo
+//rename column
+alter table studentinfo rename column email to "Your Email"
+desc studentinfo
+//modify exisiting column datatype or size
+alter table studentinfo modify "Your Email" varchar2 (20)
+desc studentinfo
+alter table studentinfo modify id number (3)
+desc studentinfo
+
+//value insert
+insert into studentinfo (id, name, phone, "Your Email") values (1, 'Mr X', '0126729', 'abc@gmail.com')
+select * from studentinfo
+insert into studentinfo values (2, 'Mr Y', '01728293', 'a@aiub.edu')
+select * from studentinfo
+insert into studentinfo values (3, 'MR Z', '01728293', 'a@aiub.edu')
+select * from studentinfo
+insert into studentinfo values (3, 'MR Z', '0338293', 'a@aiub.edu')
+select * from studentinfo
+
+//remove all rows
+delete from studentinfo
+insert into studentinfo (id, name, phone, "Your Email") values (1, 'Mr X', '0126729', 'abc@gmail.com')
+insert into studentinfo values (2, 'Mr Y', '01728293', 'a@aiub.edu')
+insert into studentinfo values (3, 'MR Z', '01728293', 'a@aiub.edu')
+insert into studentinfo values (3, 'MR Z', '0338293', 'a@aiub.edu')
+select * from studentinfo
+truncate table studentinfo
+
+insert into studentinfo (id, name, phone, "Your Email") values (1, 'Mr X', '0126729', 'abc@gmail.com')
+insert into studentinfo values (2, 'Mr Y', '01728293', 'a@aiub.edu')
+insert into studentinfo values (3, 'MR Z', '01728293', 'a@aiub.edu')
+insert into studentinfo values (3, 'MR Z', '0338293', 'a@aiub.edu')
+select * from studentinfo
+//remove a specific row
+delete from studentinfo where name = 'MR Z'
+select * from studentinfo
+//updating all rows
+update studentinfo set "Your Email" = 'id@aiub'
+select * from studentinfo
+//updating a specific row
+update studentinfo set "Your Email" = 'abc@gmail.com' where id = 1
+select * from studentinfo
+
+
+Questions-
+1) Create a table "Student" where columns are id, name, cgpa. Datatypes are number (6), varchar2 (10) and number (3,2)
+2) Rename the table as "Student Info"
+3) Add columns named as phone, dob where datatypes are varchar2(11) and date
+4) Drop the phone column
+5) Rename the dob column as "Date of Birth"
+6) Modify the length of name column where length is 20
+7) Drop the table

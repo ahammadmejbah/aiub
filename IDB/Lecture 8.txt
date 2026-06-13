@@ -1,0 +1,58 @@
+SELECT JOB, SAL,
+              DECODE(JOB, 'ANALYST',  SAL*1.1,
+                          'CLERK',   SAL*1.15,
+                          'MANAGER', SAL*1.20, 
+                          'PRESIDENT', SAL) "REVISED_SALARY"
+FROM   EMP
+
+select ename from emp
+
+select ename, sal, comm, 
+            decode(ename, 'MARTIN', sal+comm,
+                           'MILLER', sal*2,
+                           'BLAKE', sal+(nvl(comm,0)*2)) "New Salary"
+from emp
+
+select ename, mgr, nvl(to_char(mgr),'No Manager')
+from emp
+
+select sal
+from emp
+
+select max(sal), min(sal), round(avg(sal)), sum(sal), avg(comm)
+from emp
+
+select max(comm), min(comm), avg(comm), sum(comm)
+from emp
+
+select min(hiredate)
+from emp
+
+select count(*)
+from emp
+
+select comm
+from emp
+
+select count(*)
+from emp
+where comm is null
+
+select count(comm)
+from emp
+where comm is not null
+
+select comm, deptno
+from emp
+where deptno = 30
+
+select count(comm)
+from emp
+where deptno = 30
+
+select comm from emp
+
+select avg(comm) from emp
+
+select round(avg(nvl(comm,0))) 
+from emp

@@ -1,0 +1,89 @@
+//not null constraint
+create table studentinfo (id number(3,2), name varchar2(20) not null, age int, email varchar2(20))
+desc studentinfo
+drop table studentinfo
+
+//default constraint
+create table studentinfo (id number(3,2), name varchar2(20), age int default 0, email varchar2(20))
+desc studentinfo
+drop table studentinfo
+
+//unique constraint
+create table studentinfo (id number(3,2), name varchar2(20), age int, email varchar2(20) unique)
+desc studentinfo
+drop table studentinfo
+
+//check constraint
+create table studentinfo (id number(3,2), name varchar2(20), age int check (age>0), email varchar2(20))
+desc studentinfo
+drop table studentinfo
+
+//primary key constraint
+create table studentinfo (id number(3,2) primary key, name varchar2(20), age int, email varchar2(20))
+desc studentinfo
+drop table studentinfo
+
+//primary key-foreign key
+create table deptinfo(deptno number(2) primary key, deptname varchar2(20))
+desc deptinfo
+create table studentinfo(id number(2) primary key, name varchar2(20), deptno number(2), 
+                         foreign key(deptno) references deptinfo (deptno))
+desc studentinfo
+//testing primary-foreign key relation
+insert into deptinfo values (1, 'CSE')
+insert into deptinfo values (2, 'EEE')
+select * from deptinfo
+insert into studentinfo values (1, 'Mr X', 1)
+insert into studentinfo values (2, 'Mr Y', 2)
+insert into studentinfo values (3, 'Mr Z', 2)
+insert into studentinfo values (3, 'Mr Z', 3) //gives error
+select * from studentinfo
+insert into studentinfo values (4, 'Mr A',1)
+insert into studentinfo values (5, null, 1)
+drop table studentinfo
+drop table deptinfo
+
+//use all data constaints
+create table studentinfo (id number(3,2) primary key, name varchar2(20) not null, 
+                          age int default 0 check (age>0), email varchar2(20) unique)
+desc studentinfo
+drop table studentinfo
+
+//edit constraints
+create table studentinfo (id number(3,2), name varchar2(20), age int, email varchar2(20))
+desc studentinfo
+
+//for not null
+alter table studentinfo modify name not null
+desc studentinfo
+
+//for default
+alter table studentinfo modify age default 0
+desc studentinfo
+
+//for primary key
+alter table studentinfo add constraint cons1 primary key (id)
+desc studentinfo
+
+//for unique
+alter table studentinfo add constraint cons2 unique (email)
+desc studentinfo
+
+//for check
+alter table studentinfo add constraint cons3 check (age>0)
+desc studentinfo
+drop table studentinfo
+
+//primary-foreign edit constraint
+create table deptinfo(deptno int, deptname varchar2 (20))
+create table studentinfo(id int, name varchar2(20), deptno int)
+alter table deptinfo add constraint c1 primary key (deptno)
+alter table studentinfo add constraint c2 primary key (id)
+alter table studentinfo add constraint c3 foreign key (deptno) references deptinfo (deptno)
+//drop edit constraints
+alter table studentinfo drop constraint c2
+alter table studentinfo drop constraint c3
+alter table deptinfo drop constraint c1
+desc deptinfo
+drop table deptinfo
+drop table studentinfo

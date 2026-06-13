@@ -1,0 +1,112 @@
+select sysdate, CURRENT_tIMESTAMP
+from dual
+
+SELECT ename, round((SYSDATE-hiredate)) days, round((SYSDATE-hiredate)/365) years
+FROM   emp
+
+select round(months_between ('01-JAN-25', '01-JUN-24'))
+from dual
+
+select add_months(sysdate, 6)
+from dual
+
+select next_day(sysdate, 'MONDAY'), next_day(sysdate, 'TUESDAY')
+from dual
+
+select last_day('01-FEB-24')
+from dual
+
+select Round(to_date('25-jul-05'),'month'), Round(to_date('25-dec-05'),'month')
+from dual
+
+select Round(to_date('16-jul-05'),'month'), Round(to_date('15-jul-05'),'month')
+from dual
+
+select Round(to_date('16-feb-05'),'month'), Round(to_date('15-feb-05'),'month')
+from dual
+
+select Round(to_date('16-feb-05'),'year'), Round(to_date('15-feb-05'),'year')
+from dual
+
+select Round(to_date('16-jun-05'),'year'), Round(to_date('15-jul-05'),'year')
+from dual
+
+select Round(to_date(sysdate),'day'), Round(to_date('20-NOV-24'),'day')
+from dual
+
+select trunc(to_date('25-jul-05'),'month'), trunc(to_date('25-dec-05'),'month')
+from dual
+
+select trunc(to_date('25-jul-05'),'year'), trunc(to_date('01-dec-05'),'year')
+from dual
+
+select trunc(to_date('25-jul-05'),'year'), trunc(to_date('01-dec-05'),'month')
+from dual
+
+select sysdate, to_char(sysdate,'DD-MON-YYYY')
+from dual
+
+select sysdate, to_char(sysdate,'DD-MON-year')
+from dual
+
+select sysdate, to_char(sysdate,'DD-MM-YYYY')
+from dual
+
+select sysdate, to_char(sysdate,'DD-MONTH-YYYY')
+from dual
+
+select sysdate, to_char(sysdate,'DD-month-YYYY')
+from dual
+
+select sysdate, to_char(sysdate,'DY-MM-YYYY')
+from dual
+
+select sysdate, to_char(sysdate,'DaY-MM-YYYY')
+from dual
+
+select CURRENT_tIMESTAMP, to_char(CURRENT_tIMESTAMP, 'HH24:MI:SS PM')
+from dual
+
+select sysdate, to_char(sysdate,'MM " of the "YYYY')
+from dual
+
+SELECT	sal, TO_CHAR(sal,'$999') SALARY
+FROM	emp
+
+SELECT	sal, TO_CHAR(sal,'$9999') SALARY
+FROM	emp
+
+
+SELECT	sal, TO_CHAR(sal,'$09999') SALARY
+FROM	emp
+
+SELECT	sal, TO_CHAR(sal,'$0999') SALARY
+FROM	emp
+
+SELECT	sal, TO_CHAR(sal,'$000099999') SALARY
+FROM	emp
+
+SELECT	sal, TO_CHAR(sal,'$99999') SALARY
+FROM	emp
+
+SELECT	sal, TO_CHAR(sal,'$99,99,000') SALARY
+FROM	emp
+
+SELECT	sal, TO_CHAR(sal,'$00,09,99,90,00') SALARY
+FROM	emp
+
+SELECT	sal, TO_CHAR(sal,'$999') SALARY
+FROM	emp
+
+select comm, nvl(comm,0), nvl(comm,5)
+from emp
+
+SELECT ename, sal, comm, (sal*12)+comm, (sal*12)+NVL(comm,0)
+FROM   emp;
+
+Select comm, sal, comm+sal, nvl2(comm,comm+sal,sal) from emp
+
+Select ename, job, length(ename),length(job), NULLIF(length(ename),length(job)) from emp;
+
+select mgr, nvl(mgr,0), nvl(to_char(mgr), 'No Manager')
+from emp
